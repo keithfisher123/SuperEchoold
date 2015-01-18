@@ -4,7 +4,7 @@ import com.noelportugal.amazonecho.AmazonEchoApi;
 import java.io.IOException;
 
 public class Main {
-    
+    //FOO
     private static AmazonEchoApi amazonEchoApi;
     private static Insteon insteonHub;
    // private static SmartThings smartThings;
