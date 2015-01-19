@@ -155,7 +155,7 @@ public class AmazonEchoApi {
     
     public String getLatestTodo() throws IOException{
         String output = httpGet("/api/todos?type=TASK&size=1");
-System.out.println(output);
+//System.out.println(output);
 
                 // Parse JSON
         Object obj = JSONValue.parse(output);
