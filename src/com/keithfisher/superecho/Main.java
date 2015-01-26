@@ -11,36 +11,21 @@ public class Main {
     
     public static void main(String[] args) throws IOException, InterruptedException {
         
-      amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com","keithfisher@gmail.com", "password");
+      amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com","keithfisher@gmail.com", "zaphod");
       amazonEchoApi.httpLogin();
-     insteonHub= new Insteon("173.227.35.146","25105","password","admin");      
-   amazonEchoApi.getLatestTodo();
-     //amazonEchoApi.getLatestHistory();
-     insteonHub.setDevice("LivingRoom1", 1);
+      insteonHub= new Insteon("173.227.35.146","25105","password","admin");      
+    
       while(true){
             String command="";
             try {
-            command = amazonEchoApi.getLatestTodo();
+            command = amazonEchoApi.getLatestHistory();
               System.out.println("command="+command);
             } catch (Exception e) {
                 System.out.println(e);
             }
            
             if (command != null){
-                System.out.println(command);
-                if (command.equalsIgnoreCase("Turn on the living room light")){
-                 insteonHub.setDevice("foo", 1);
-                }
-                 if (command.equalsIgnoreCase("Turn on the living room lights")){
-                 insteonHub.setDevice("foo", 1);
-                }
-                 if (command.equalsIgnoreCase("Turn off the living room light")){
-                 insteonHub.setDevice("foo", 2);   
-                }
-                   if (command.equalsIgnoreCase("Turn off the living room lights")){
-                 insteonHub.setDevice("foo", 2);   
-                }
-                
+          //Parse the command      
                
             }else{
                 System.out.println("No new commands");

@@ -203,8 +203,9 @@ JSONObject item = (JSONObject)values.get(0);
     }  
     public String getLatestHistory() throws IOException{
         String output = httpGet("/api/activities?startTime=&size=1&offset=-1");
-       System.out.println(output);
+//       System.out.println(output);
                 // Parse JSON
+      
         Object obj = JSONValue.parse(output);
         JSONObject jsonObject = (JSONObject) obj;
         JSONArray values = (JSONArray) jsonObject.get("activities");
@@ -215,15 +216,28 @@ System.out.println(item.toString());
 
         // Get text and itemId
         String text = item.get("description").toString();
-       String itemId = item.get("description").toString();
-System.out.println("text="+text);
+       System.out.println("text="+text);
+//Get the summary text
+  //      Object obj2 = JSONValue.parse(text);
+    //    JSONObject jsonObject2 = (JSONObject) obj2;
+      //  JSONArray values2 = (JSONArray) jsonObject.get("summary");
 
       
-      if (!checkItemId(itemId)){
-        addItemId(itemId);
+      
+            
+
+      
+     // JSONObject item2=(JSONObject) values2.get(0);
+     // text = item2.get("summary").toString();
+     // String itemId = item2.get("firstStreamId").toString();
+    //  System.out.println("text="+text);
+
+      
+  //    if (!checkItemId(itemId)){
+    //    addItemId(itemId);
        return text;
-      }else{
-       return null;
-       }
+     // }else{
+      // return null;
+      // }
     }  
 }
