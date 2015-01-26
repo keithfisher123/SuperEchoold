@@ -60,6 +60,7 @@ public class AmazonEchoApi {
             httpGet.setHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13");
             HttpResponse httpResponse = httpclient.execute(httpGet);
             StatusLine responseStatus = httpResponse.getStatusLine();
+        //  System.out.println(responseStatus);
             int statusCode = responseStatus.getStatusCode();
             if (statusCode == 200) {
                 httpResponse.getEntity();
@@ -154,15 +155,15 @@ public class AmazonEchoApi {
     }
     
     public String getLatestTodo() throws IOException{
-        String output = httpGet("/api/todos?type=TASK&size=1");
-//System.out.println(output);
 
-                // Parse JSON
+      String output = httpGet("/api/todos?type=TASK&size=1");
+    //   System.out.println(output);
+     // Parse JSON
         Object obj = JSONValue.parse(output);
         JSONObject jsonObject = (JSONObject) obj;
         JSONArray values = (JSONArray) jsonObject.get("values");
         JSONObject item = (JSONObject)values.get(0);
-
+//System.out.println(item);
         // Get text and itemId
         String text = item.get("text").toString();
         String itemId = item.get("itemId").toString();
@@ -175,8 +176,9 @@ public class AmazonEchoApi {
         }
     }
    public String getLatestCards() throws IOException{
-        String output = httpGet("/api/cards");
-      // System.out.println(output);
+      
+     String output = httpGet("/api/cards");
+      System.out.println(output);
                 // Parse JSON
         Object obj = JSONValue.parse(output);
         JSONObject jsonObject = (JSONObject) obj;

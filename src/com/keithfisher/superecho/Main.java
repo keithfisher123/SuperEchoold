@@ -6,17 +6,18 @@ import java.io.IOException;
 public class Main {
 
   private static AmazonEchoApi amazonEchoApi;
-   // private static Insteon insteonHub;
+  private static Insteon insteonHub;
   
     
     public static void main(String[] args) throws IOException, InterruptedException {
         
       amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com","keithfisher@gmail.com", "password");
       amazonEchoApi.httpLogin();
-     //   insteonHub= new Insteon("192.168.1.110","20105","password","admin");      
-      // amazonEchoApi.getLatestTodo();
-     // amazonEchoApi.getLatestHistory();
-        while(true){
+     insteonHub= new Insteon("173.227.35.146","25105","password","admin");      
+   amazonEchoApi.getLatestTodo();
+     //amazonEchoApi.getLatestHistory();
+     insteonHub.setDevice("LivingRoom1", 1);
+      while(true){
             String command="";
             try {
             command = amazonEchoApi.getLatestTodo();
@@ -27,17 +28,17 @@ public class Main {
            
             if (command != null){
                 System.out.println(command);
-                if (command.equalsIgnoreCase("Turn the living room lights on")){
-                // insteonHub.setDevice("foo", 1);
+                if (command.equalsIgnoreCase("Turn on the living room light")){
+                 insteonHub.setDevice("foo", 1);
                 }
                  if (command.equalsIgnoreCase("Turn on the living room lights")){
-               //  insteonHub.setDevice("foo", 1);
+                 insteonHub.setDevice("foo", 1);
                 }
-                 if (command.equalsIgnoreCase("Turn the living room lights off")){
-               //  insteonHub.setDevice("foo", 2);   
+                 if (command.equalsIgnoreCase("Turn off the living room light")){
+                 insteonHub.setDevice("foo", 2);   
                 }
                    if (command.equalsIgnoreCase("Turn off the living room lights")){
-               //  insteonHub.setDevice("foo", 2);   
+                 insteonHub.setDevice("foo", 2);   
                 }
                 
                
@@ -45,7 +46,7 @@ public class Main {
                 System.out.println("No new commands");
             }
                            
-            Thread.sleep(10000);
+            Thread.sleep(5000);
         }  
         
     }    
